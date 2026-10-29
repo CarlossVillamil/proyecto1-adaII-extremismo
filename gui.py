@@ -5,6 +5,7 @@ from tkinter import ttk, filedialog, messagebox
 from modexfb import modexFB
 from modexv import modexV
 from modexpd import modexPD
+from utils import calcular_extremismo
 
 class ModExApp:
     def __init__(self, root):
@@ -16,6 +17,7 @@ class ModExApp:
         self.n = 0
         self.agentes = []
         self.r_max = 0
+        self.extremismo_inicial = None
         self.resultado_actual = None
         
         self.crear_interfaz()
@@ -56,9 +58,11 @@ class ModExApp:
         self.lbl_rmax.grid(row=0, column=1, padx=10, sticky=tk.W)
         
         self.lbl_esfuerzo = ttk.Label(frame_resumen, text="Esfuerzo Aplicado: -")
-        self.lbl_esfuerzo.grid(row=1, column=0, padx=10, pady=10, sticky=tk.W)
+        self.lbl_esfuerzo.grid(row=1, column=1, padx=10, pady=10, sticky=tk.W)
+        self.lbl_ext_inicial = ttk.Label(frame_resumen, text="Extremismo Inicial: -")
+        self.lbl_ext_inicial.grid(row=0, column=2, padx=10, sticky=tk.W)
         self.lbl_ext = ttk.Label(frame_resumen, text="Extremismo Final: -")
-        self.lbl_ext.grid(row=1, column=1, padx=10, pady=10, sticky=tk.W)
+        self.lbl_ext.grid(row=1, column=2, padx=10, pady=10, sticky=tk.W)
         
         frame_tabla = ttk.LabelFrame(panel_der, text="Datos de la Red Social", padding="10")
         frame_tabla.pack(fill=tk.BOTH, expand=True)
@@ -107,10 +111,16 @@ class ModExApp:
                 self.tabla.insert("", "end", values=(i-1, op, rec, inf, "No moderado"))
                 
             self.r_max = int(lineas[self.n + 1])
+            self.extremismo_inicial = calcular_extremismo(
+                self.agentes, [0] * self.n
+            )
             
             self.lbl_archivo.config(text=ruta.split('/')[-1])
             self.lbl_n.config(text=f"Agentes (n): {self.n}")
             self.lbl_rmax.config(text=f"Presupuesto (R_max): {self.r_max}")
+            self.lbl_ext_inicial.config(
+                text=f"Extremismo Inicial: {self.extremismo_inicial:.2f}"
+            )
             self.resultado_actual = None
             self.lbl_esfuerzo.config(text="Esfuerzo Aplicado: -")
             self.lbl_ext.config(text="Extremismo Final: -")
