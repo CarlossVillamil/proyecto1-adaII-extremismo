@@ -3,8 +3,8 @@ from utils import calcular_extremismo, calcular_esfuerzo_individual
 def modexV(n, agentes: list[tuple[float, float, float]], r_max):
     """
     Esta solución voraz modera la mayor cantidad de agentes
-    posibles priorizando aquellos cuya opinión representan un nivel
-    de extremismo mayor.
+    posibles priorizando aquellos cuya relación costo-beneficio
+    al moderar sea mayor
     """
     e_array = [0] * n
 
