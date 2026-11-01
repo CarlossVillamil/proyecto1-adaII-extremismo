@@ -28,3 +28,11 @@ def calcular_esfuerzo(agentes, estrategia):
             costo_i = math.ceil(abs(op) * (1 - rec) * inf)
             esfuerzo_total += costo_i
     return esfuerzo_total
+
+def calcular_esfuerzo_individual(agente):
+    """
+    Calcula el esfuerzo total necesario para aplicar la estrategia E.
+    """
+    op, rec, inf = agente
+    # Ceil(|op - 0| * (1 - rec) * inf)
+    return math.ceil(abs(op) * (1 - rec) * inf)
