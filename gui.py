@@ -12,8 +12,8 @@ from utils import calcular_extremismo, costo_moderar
 from generador import generar_caso, guardar_caso
 
 # Límites para no congelar la aplicación con entradas grandes
-LIMITE_N_FB = 20                 # 2^20 combinaciones ~ unos segundos
-LIMITE_CELDAS_PD = 200_000_000   # n * R efectivo (la prueba 30 tiene ~1.6e8)
+LIMITE_N_FB = 20                 # con n grande explora 2^n combinaciones y puede tardar mucho
+LIMITE_CELDAS_PD = 200_000_000   # n * R efectivo = celdas de la tabla de PD
 
 
 class ModExApp:
