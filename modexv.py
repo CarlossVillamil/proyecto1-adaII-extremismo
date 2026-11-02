@@ -1,6 +1,6 @@
 from utils import calcular_extremismo, calcular_esfuerzo_individual
 
-def modexV(n, agentes: list[tuple[float, float, float]], r_max):
+def modexV(n, agentes, r_max):
     """
     Esta solución voraz modera la mayor cantidad de agentes
     posibles priorizando aquellos cuya relación costo-beneficio
