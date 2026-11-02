@@ -51,7 +51,7 @@ El código está diseñado bajo una arquitectura modular desacoplada en Python 3
 para facilitar el trabajo en equipo mediante Git y evitar conflictos de fusión:
 
 ```text
-proyecto_modex/
+proyecto1-adaII-extremismo/
 │
 ├── main.py              # Punto de entrada de la aplicación
 ├── gui.py               # Interfaz gráfica (Tkinter/ttk native UI)
@@ -59,6 +59,7 @@ proyecto_modex/
 ├── modexv.py            # Algoritmo Voraz (modexV)
 ├── modexpd.py           # Algoritmo de Programación Dinámica (modexPD)
 ├── utils.py             # Funciones matemáticas de extremismo y esfuerzo
+├── generador.py         # Generador de casos de prueba aleatorios
 ├── README.md            # Documentación del proyecto
 └── casos_prueba/        # Archivos .txt de prueba de entrada y salida
 ```
@@ -81,8 +82,31 @@ proyecto_modex/
    python main.py
    ```
 
+   (En Windows, si `python` no responde, usa `py main.py`.)
+
 > **Nota para usuarios de Linux (Ubuntu/Debian):** si Tkinter no está
 > instalado, ejecuta `sudo apt-get install python3-tk`.
+
+## Funciones de la interfaz
+
+- **Cargar Archivo .txt:** lee una red social con el formato de entrada.
+- **Generar Caso de Prueba:** pide `n` y, opcionalmente, `R_max` (si se deja
+  vacío usa el 40 % del costo total de moderar a todos). Luego pide dónde
+  guardar el archivo, genera una red aleatoria (sin semilla, por lo que no es
+  reproducible), la guarda en ese `.txt` y la carga en la interfaz. Si se
+  cancela el diálogo de guardado, no se genera nada.
+- **Ejecutar:** corre el algoritmo elegido (FB, V o PD) y muestra el
+  extremismo, el esfuerzo y qué agentes se moderan.
+- **Verificación de la Solución:** después de ejecutar, recalcula el esfuerzo
+  sumando los costos de los agentes moderados (los costos de la tabla, que se
+  calculan con la misma función `costo_moderar` que usan los algoritmos) y el
+  extremismo con su fórmula a partir de opinión e influencia. Comprueba que
+  coincidan con lo que devolvió el algoritmo y que el esfuerzo sea menor o
+  igual que `R_max`. No comprueba la optimalidad (eso se ve en "Comparar los
+  3").
+- **Comparar los 3:** ejecuta los tres algoritmos y muestra extremismo,
+  esfuerzo, tiempo y la columna "¿Óptimo?".
+- **Guardar Salida .txt:** escribe el resultado con el formato de salida.
 
 ## Formato de archivos de entrada y salida
 
@@ -118,7 +142,7 @@ El archivo tiene exactamente `n + 2` líneas:
 
 | Algoritmo | Función | Complejidad temporal | Complejidad espacial | Descripción |
 |---|---|---:|---:|---|
-| Fuerza bruta | `modexFB` | `O(2^n)` | `O(n)` | Explora exhaustivamente las `2^n` combinaciones de decisiones posibles. Garantiza la solución óptima. |
+| Fuerza bruta | `modexFB` | `Θ(n · 2^n)` | `O(n)` | Explora exhaustivamente las `2^n` combinaciones de decisiones posibles; cada una se evalúa en `O(n)`. Garantiza la solución óptima. |
 | Voraz (Greedy) | `modexV` | `O(n log n)` | `O(n)` | Aplica una heurística de selección rápida basada en la mejor relación beneficio/esfuerzo. No garantiza el óptimo global. |
 | Programación dinámica | `modexPD` | `O(n · R_max)` | `O(n · R_max)` | Construye la matriz de subproblemas y reconstruye el vector óptimo `E`. Garantiza la solución óptima eficientemente. |
 
