@@ -1,5 +1,16 @@
 import math
 
+
+def costo_moderar(agente):
+    """
+    Esfuerzo de moderar un agente: ceil(|op - 0| * (1 - rec) * inf).
+    Se redondea a 9 decimales antes del ceil para evitar errores de
+    punto flotante (ej: 10 * (1 - 0.7) = 3.0000000000000004 -> daria 4).
+    """
+    op, rec, inf = agente
+    return math.ceil(round(abs(op) * (1 - rec) * inf, 9))
+
+
 def calcular_extremismo(agentes, estrategia):
     """
     Calcula el extremismo de la red dada una estrategia de moderación E.
@@ -13,8 +24,9 @@ def calcular_extremismo(agentes, estrategia):
         # Si e_i == 1, la opinión pasa a 0; si e_i == 0, se mantiene op
         op_nueva = 0 if estrategia[i] == 1 else op
         suma += (op_nueva ** 2) * inf
-        
+
     return math.sqrt(suma) / n
+
 
 def calcular_esfuerzo(agentes, estrategia):
     """
@@ -23,16 +35,12 @@ def calcular_esfuerzo(agentes, estrategia):
     esfuerzo_total = 0
     for i in range(len(agentes)):
         if estrategia[i] == 1:
-            op, rec, inf = agentes[i]
-            # Ceil(|op - 0| * (1 - rec) * inf)
-            costo_i = math.ceil(abs(op) * (1 - rec) * inf)
-            esfuerzo_total += costo_i
+            esfuerzo_total += costo_moderar(agentes[i])
     return esfuerzo_total
+
 
 def calcular_esfuerzo_individual(agente):
     """
-    Calcula el esfuerzo total necesario para aplicar la estrategia E.
+    Calcula el esfuerzo de moderar un solo agente.
     """
-    op, rec, inf = agente
-    # Ceil(|op - 0| * (1 - rec) * inf)
-    return math.ceil(abs(op) * (1 - rec) * inf)
+    return costo_moderar(agente)
