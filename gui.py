@@ -388,7 +388,7 @@ class ModExApp:
 # ----------------------------------------------------------------------
 def leer_entrada(ruta):
     """Lee un archivo con el formato del enunciado. Retorna (n, agentes, r_max)."""
-    with open(ruta, 'r') as f:
+    with open(ruta, 'r', encoding='utf-8-sig') as f:
         lineas = [l.strip() for l in f.readlines() if l.strip()]
 
     n = int(lineas[0])
