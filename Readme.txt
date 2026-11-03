@@ -137,7 +137,8 @@ y que el algoritmo Voraz nunca supere al optimo.
 - aleatorio_n20.txt: Caso aleatorio de n=20 (R_max=600); requiere --fb-max 20.
 - grande_n1000.txt: Caso de gran escala (n=1000, R_max=20000) para medir PD y Voraz.
 - voraz_falla1.txt: Contraejemplo donde la heuristica voraz no alcanza el optimo (n=3).
-- voraz_falla2.txt: Segundo contraejemplo donde la heuristica voraz no alcanza el optimo (n=3).
+- voraz_contraejemplo.txt: Contraejemplo donde el voraz falla: un agente barato de alta razon bloquea al agente de mayor aporte (n=2, R_max=99).
+- voraz_falla2.txt: Caso disenado para enganar a un voraz que elige por menor costo. Nuestro voraz (por razon beneficio/costo) SI encuentra el optimo aqui (n=3, R_max=60).
 
 --------------------------------------------------------------------------------
 11. Complejidad teorica de los algoritmos
@@ -162,3 +163,4 @@ y que el algoritmo Voraz nunca supere al optimo.
   optimizada en memoria con tabla de decisiones compacta de 1 byte por celda
   y reconstruccion hacia atras en O(n). Garantiza la solucion optima de
   manera eficiente.
+
