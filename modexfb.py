@@ -29,8 +29,9 @@ def modexFB(n, agentes, r_max):
             # 3. Calculamos el extremismo resultante de la red social Mod(RS, E)
             ext_actual = calcular_extremismo(agentes, E_actual)
             
-            # 4. Buscamos el mínimo extremismo. Si hay un empate en extremismo,
-            # o si encontramos una estrategia con menor extremismo, la actualizamos.
+            # 4. Buscamos el mínimo extremismo. Solo se actualiza si es
+            # estrictamente menor: en caso de empate se conserva la primera
+            # estrategia encontrada.
             if ext_actual < mejor_ext:
                 mejor_ext = ext_actual
                 mejor_esfuerzo = esfuerzo_actual
