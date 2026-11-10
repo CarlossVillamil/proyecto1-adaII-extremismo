@@ -13,8 +13,8 @@ Monitor: Samuel Galindo
 --------------------------------------------------------------------------------
 1. Carlos Manuel Villamil Grisales - 2257751
 2. Sebastian Saldana - 2410214
-3. Sebastian Marulanda - [COMPLETAR]
-4. Mateo Noguera - [COMPLETAR]
+3. Sebastian Marulanda - 2410241
+4. Mateo Noguera - 2342673
 
 --------------------------------------------------------------------------------
 2. Descripcion del problema ModEx
@@ -38,7 +38,6 @@ sin exceder R_max.
 - utils.py: Funciones matematicas de calculo de extremismo y costo de moderacion.
 - generador.py: Generador de casos de prueba y redes sociales aleatorias.
 - pruebas.py: Suite de pruebas automaticas con recalculacion independiente.
-- README.md: Documentacion principal del proyecto en formato Markdown.
 - Readme.txt: Descripcion general, manual de usuario e instrucciones de ejecucion.
 - casos_prueba/: Directorio con casos de prueba en formato .txt.
 
@@ -46,7 +45,7 @@ sin exceder R_max.
 4. Se agrega al empaquetar
 --------------------------------------------------------------------------------
 Al momento de generar el archivo comprimido final (.zip) se debe incluir:
-- Informe del proyecto en formato PDF: [COMPLETAR_NOMBRE_INFORME.pdf]
+- Informe del proyecto en formato PDF: Informe de Proyecto - Analisis y Diseno de Algoritmos II.pdf
 
 --------------------------------------------------------------------------------
 5. Requisitos del sistema
