@@ -16,7 +16,10 @@ Monitor: Samuel Galindo
 3. Sebastian Marulanda - 2410241
 4. Mateo Noguera - 2342673
 
-Repositorio: https://github.com/CarlossVillamil/proyecto1-adaII-extremismo.git
+Repositorio: https://github.com/CarlossVillamil/proyecto1-adaII-extremismo
+
+Enlace al video de sustentación: https://youtu.be/8XBKj7zeq5w
+
 --------------------------------------------------------------------------------
 2. Descripcion del problema ModEx
 --------------------------------------------------------------------------------
@@ -29,7 +32,7 @@ determinar el subconjunto de agentes a moderar que minimice el extremismo global
 sin exceder R_max.
 
 --------------------------------------------------------------------------------
-3. Estructura y lista de archivos del repositorio
+3. Estructura y lista de archivos entregados
 --------------------------------------------------------------------------------
 - main.py: Punto de entrada de la aplicacion que inicializa la interfaz grafica.
 - gui.py: Modulo de interfaz grafica (Tkinter/ttk) y lectura/escritura de archivos.
@@ -41,12 +44,15 @@ sin exceder R_max.
 - pruebas.py: Suite de pruebas automaticas con recalculacion independiente.
 - Readme.txt: Descripcion general, manual de usuario e instrucciones de ejecucion.
 - casos_prueba/: Directorio con casos de prueba en formato .txt.
+- dist/ModEx.exe: Ejecutable de la aplicacion para Windows (no requiere Python).
+- Bateria de pruebas/: Las 35 pruebas entregadas por el profesor
+  (Prueba1.txt a Prueba35.txt).
 
 --------------------------------------------------------------------------------
-4. Se agrega al empaquetar
+4. Informe del proyecto
 --------------------------------------------------------------------------------
-Al momento de generar el archivo comprimido final (.zip) se debe incluir:
-- Informe del proyecto en formato PDF: Informe de Proyecto - Analisis y Diseno de Algoritmos II.pdf
+El informe en formato PDF viene incluido en el .zip:
+- Informe de Proyecto - Analisis y Diseno de Algoritmos II.pdf
 
 --------------------------------------------------------------------------------
 5. Requisitos del sistema
@@ -60,8 +66,9 @@ Al momento de generar el archivo comprimido final (.zip) se debe incluir:
 --------------------------------------------------------------------------------
 6. Instrucciones de ejecucion
 --------------------------------------------------------------------------------
-Abrir una terminal en la raiz del proyecto y ejecutar:
-    python main.py (en Windows, si python no responde, usa py main.py)
+Opcion A (Windows, sin Python): doble clic en dist/ModEx.exe
+Opcion B (con Python): python main.py  (o py main.py)
+Si Windows Defender bloquea el .exe, use la opcion B.
 
 --------------------------------------------------------------------------------
 7. Formatos de archivos de entrada y salida
@@ -121,6 +128,11 @@ Opciones disponibles:
 Las pruebas validan que FB y PD coincidan en extremismo, que ningun algoritmo
 exceda R_max, que los valores reportados coincidan con el recalculo independiente
 y que el algoritmo Voraz nunca supere al optimo.
+
+Nota:pruebas.py solo recorre casos_prueba/. Las pruebas de "Bateria de pruebas"
+son grandes (hasta n=30000): cargarlas desde la interfaz. Las pruebas
+31 en adelante pueden tardar varios minutos con PD, y las 33 a 35 no
+son viables con PD en un equipo de 16 GB de RAM (usar Voraz).
 
 --------------------------------------------------------------------------------
 10. Descripcion de archivos en casos_prueba/
